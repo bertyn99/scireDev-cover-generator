@@ -50,17 +50,28 @@ function navPaginate({ currentPage }: { currentPage: number }) {}
       placeholder="Icon name"
     />
     <div class="h-80 w-5/6 shadow-md mx-auto">
-      <div class="flex flex-wrap h-[90%] justify-center">
-        <div
-          v-for="icon in visibleIcons"
-          :key="icon"
-          class="flex items-center justify-between p-2 cursor-pointer group hover:bg-white"
-        >
-          <Icon
-            :name="icon"
-            class="w-6 h-6 text-gray-500 group-hover:text-gray-800"
-          />
-        </div>
+      <div class="flex flex-wrap h-[90%] justify-center items-center">
+        <template v-if="visibleIcons.length !== 0">
+          <div
+            v-for="icon in visibleIcons"
+            :key="icon"
+            class="flex items-center max-h-10 justify-between p-2 cursor-pointer group hover:bg-white"
+          >
+            <Icon
+              :name="icon"
+              class="w-6 h-6 text-gray-500 group-hover:text-gray-800"
+            />
+          </div>
+        </template>
+        <template v-else>
+          <div class="flex flex-col justify-center items-center">
+            <p class="font-semibold">No icon found</p>
+            <Icon
+              name="fluent:error-circle-12-regular"
+              class="h-14 w-14 text-gray-700"
+            />
+          </div>
+        </template>
       </div>
       <nav
         class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0 h-[10%] max-h-7"
@@ -102,7 +113,5 @@ function navPaginate({ currentPage }: { currentPage: number }) {}
         </div>
       </nav>
     </div>
-    current {{ currentPage }} page size {{ currentPageSize }} page count
-    {{ pageCount }}
   </div>
 </template>
