@@ -27,13 +27,14 @@ const emit = defineEmits(["update:modelValue"]);
     :modelValue="props.modelValue"
     @update:modelValue="(value:string) => emit('update:modelValue', value)"
     by="name"
+    class="flex justify-around m-2 px-3 items-center"
   >
     <ListboxLabel class="block text-sm font-medium text-gray-700"
       >{{ props.label }}
     </ListboxLabel>
-    <div class="relative mt-1">
+    <div class="relative">
       <ListboxButton
-        class="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+        class="relative w-full mx-auto min-w-[12rem] cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
       >
         <span class="block truncate capitalize">{{ modelValue?.name }}</span>
         <span
