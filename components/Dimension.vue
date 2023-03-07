@@ -30,7 +30,6 @@ watch(
 <template>
   <div class="m-2">
     <h3 class="font-bold text-2xl text-gray-700">Dimensions</h3>
-    {{ height }}
     <BasicInput
       label="height"
       placeholder="1000"
