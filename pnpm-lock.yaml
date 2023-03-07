@@ -4,6 +4,7 @@ specifiers:
   '@headlessui/vue': ^1.7.11
   '@nuxtjs/tailwindcss': ^6.4.1
   '@tailwindcss/forms': ^0.5.3
+  '@vueuse/core': ^9.13.0
   autoprefixer: ^10.4.13
   nuxt: ^3.2.2
   nuxt-headlessui: ^1.1.1
@@ -14,6 +15,7 @@ specifiers:
 dependencies:
   '@headlessui/vue': 1.7.11
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
+  '@vueuse/core': 9.13.0
   nuxt-headlessui: 1.1.1
 
 devDependencies:
@@ -22,7 +24,7 @@ devDependencies:
   nuxt: 3.2.2
   nuxt-icon: 0.3.2
   postcss: 8.4.21
-  tailwindcss: 3.2.7
+  tailwindcss: 3.2.7_postcss@8.4.21
 
 packages:
 
@@ -1090,7 +1092,7 @@ packages:
       postcss-custom-properties: 13.1.4_postcss@8.4.21
       postcss-nesting: 11.2.1_postcss@8.4.21
       tailwind-config-viewer: 1.7.2_tailwindcss@3.2.7
-      tailwindcss: 3.2.7
+      tailwindcss: 3.2.7_postcss@8.4.21
       ufo: 1.1.0
     transitivePeerDependencies:
       - rollup
@@ -1266,7 +1268,7 @@ packages:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.2.7
+      tailwindcss: 3.2.7_postcss@8.4.21
     dev: false
 
   /@trysound/sax/0.2.0:
@@ -1288,6 +1290,10 @@ packages:
   /@types/resolve/1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
     dev: true
+
+  /@types/web-bluetooth/0.0.16:
+    resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
+    dev: false
 
   /@unhead/dom/1.1.0:
     resolution: {integrity: sha512-PyTDzPUKnWamV4ZMuo04c9XzDVQLHeZ8Pk74z7ua+eVUZx2Ph6vWRsVqi/2+WZAGS///NJVi/d4FqMAex7251A==}
@@ -1484,6 +1490,18 @@ packages:
     resolution: {integrity: sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ==}
     dev: true
 
+  /@vueuse/core/9.13.0:
+    resolution: {integrity: sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==}
+    dependencies:
+      '@types/web-bluetooth': 0.0.16
+      '@vueuse/metadata': 9.13.0
+      '@vueuse/shared': 9.13.0
+      vue-demi: 0.13.11
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
   /@vueuse/head/1.1.0_vue@3.2.47:
     resolution: {integrity: sha512-P8lxugca+u7Uyl4kkS1/Ia3B7PzU4oHHe1je2kTmxywyY2PnKAAgB3OfR5iP9k9YQ5Ejdl3MQBJCEPK9hbeaow==}
     peerDependencies:
@@ -1495,6 +1513,19 @@ packages:
       '@unhead/vue': 1.1.0_vue@3.2.47
       vue: 3.2.47
     dev: true
+
+  /@vueuse/metadata/9.13.0:
+    resolution: {integrity: sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==}
+    dev: false
+
+  /@vueuse/shared/9.13.0:
+    resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
+    dependencies:
+      vue-demi: 0.13.11
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /abbrev/1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -5086,15 +5117,17 @@ packages:
       open: 7.4.2
       portfinder: 1.0.32
       replace-in-file: 6.3.5
-      tailwindcss: 3.2.7
+      tailwindcss: 3.2.7_postcss@8.4.21
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /tailwindcss/3.2.7:
+  /tailwindcss/3.2.7_postcss@8.4.21:
     resolution: {integrity: sha512-B6DLqJzc21x7wntlH/GsZwEXTBttVSl1FtCzC8WP4oBc/NKef7kaax5jeihkkCEWc831/5NDJ9gRNDK6NEioQQ==}
     engines: {node: '>=12.13.0'}
     hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3
@@ -5521,6 +5554,19 @@ packages:
     dependencies:
       ufo: 1.1.0
     dev: true
+
+  /vue-demi/0.13.11:
+    resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dev: false
 
   /vue-devtools-stub/0.1.0:
     resolution: {integrity: sha512-RutnB7X8c5hjq39NceArgXg28WZtZpGc3+J16ljMiYnFhKvd8hITxSWQSQ5bvldxMDU6gG5mkxl1MTQLXckVSQ==}
