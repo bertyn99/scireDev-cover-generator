@@ -1,11 +1,13 @@
 <script lang="ts" setup></script>
 
 <template>
-  <aside class="h-screen w-2/5 p-8 bg-blue-50">
+  <aside class="md:w-2/5 max-w-xl p-8 bg-blue-50 flex-1">
     <h2 class="font-bold text-3xl text-gray-800">Parameters</h2>
-    <Dimension />
-    <BackgroundEditor />
-    <TextEditor />
-    <AssetsEditor />
+    <dl>
+      <Dimension />
+      <BackgroundEditor />
+      <TextEditor />
+      <AssetsEditor />
+    </dl>
   </aside>
 </template>

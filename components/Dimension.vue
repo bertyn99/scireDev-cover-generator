@@ -1,6 +1,9 @@
 <script lang="ts" setup>
-const height = ref<number>(1080);
-const width = ref<number>(1920);
+import { useCanvasStore } from "~~/store";
+
+const canvaStore = useCanvasStore();
+const height = computed(() => canvaStore.height);
+const width = computed(() => canvaStore.width);
 
 const dimensionPresets = [
   { name: "article post", width: 1920, height: 1080 },
@@ -21,8 +24,7 @@ const selected = ref(dimensionPresets[0]);
 watch(
   () => selected.value,
   (val) => {
-    height.value = val.height;
-    width.value = val.width;
+    canvaStore.setDimension(val.height, val.width);
   }
 );
 </script>
