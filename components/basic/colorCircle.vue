@@ -7,11 +7,11 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div
-    class="h-9 w-9 rounded-full cursor-pointer shadow-md"
+  <button
+    class="h-9 w-9 rounded-full cursor-pointer shadow-md hover:border-2 border-blue-400 focus:outline-none focus:ring focus:border-blue-500"
     :class="{
-      'border-2 border-blue-500': selected,
+      'border-[3px] border-blue-600': selected,
     }"
-    :style="`background-image: linear-gradient(to right, ${color[0]} 0%, ${color[1]} 100%);`"
-  ></div>
+    :style="`background-image: linear-gradient(90deg, ${color[0]} 0%, ${color[1]} 100%);`"
+  ></button>
 </template>

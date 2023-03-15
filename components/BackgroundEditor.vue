@@ -3,12 +3,16 @@ import { colorChoice } from "~~/types/color";
 
 const colors: colorChoice[] = [
   {
-    name: "pearl",
-    color: ["#F5F5F5", "#E8E8E8"],
+    name: "fire",
+    color: ["#F12711", "#F9BC2C"],
   },
   {
-    name: "candy",
-    color: ["red", "pink"],
+    name: "wave",
+    color: ["#3A47D5", "#00D2FF"],
+  },
+  {
+    name: "duck",
+    color: ["#FBD07C", "#FDFD57"],
   },
 ];
 
