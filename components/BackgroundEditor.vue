@@ -23,7 +23,7 @@ const selectBgColor = (color: string) => {
 </script>
 
 <template>
-  <div class="m-2">
+  <dl class="m-2">
     <h3 class="font-bold text-2xl text-gray-700">Background</h3>
     <label
       for="email"
@@ -40,5 +40,5 @@ const selectBgColor = (color: string) => {
         @clik="() => selectBgColor(color.name)"
       />
     </div>
-  </div>
+  </dl>
 </template>
