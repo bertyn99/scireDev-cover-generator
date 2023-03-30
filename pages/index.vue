@@ -2,47 +2,34 @@
 import { useCanvasStore } from "~~/store";
 
 const canvaStore = useCanvasStore();
-const height = computed(() => canvaStore.height);
-const width = computed(() => canvaStore.width);
+const height = computed(() => canvaStore.height * 0.45);
+const width = computed(() => canvaStore.width * 0.45);
 const coverRef = ref<HTMLCanvasElement | null>(null);
 const parentRef = ref<HTMLDivElement | null>(null);
 const aspectRatio = computed(() => {
   return canvaStore.width / canvaStore.height;
 });
 const ctx = computed(() => coverRef.value?.getContext("2d"));
-
 watch(
   () => canvaStore.height,
   (val) => {
-    if (
-      parentRef.value!.offsetWidth - 32 / aspectRatio.value <
-      parentRef.value!.offsetHeight - 32
-    ) {
-      coverRef.value!.height =
-        parentRef.value!.offsetWidth - 32 / aspectRatio.value;
-    } else {
-      coverRef.value!.height = parentRef.value!.offsetHeight - 32;
+    if (val * 0.45 < 340) {
+      coverRef.value!.height = 340;
+      return;
     }
+    coverRef.value!.height = val * 0.45;
   }
 );
 watch(
   () => canvaStore.width,
   (val) => {
-    if (
-      parentRef.value!.offsetWidth - 32 / aspectRatio.value <
-      parentRef.value!.offsetHeight - 32
-    ) {
-      coverRef.value!.width = parentRef.value!.offsetWidth - 32;
-    } else {
-      coverRef.value!.width =
-        (parentRef.value!.offsetHeight - 32) * aspectRatio.value;
-    }
+    coverRef.value!.width = Math.ceil(width.value);
   }
 );
-
 onMounted(() => {
-  console.log(parentRef.value!.clientWidth);
-  console.log(parentRef.value!.offsetWidth);
+  //setup canva
+  coverRef.value!.width = width.value || 432;
+  coverRef.value!.height = height.value || 768;
 });
 </script>
 
@@ -55,7 +42,7 @@ onMounted(() => {
     <h1 class="font-bold text-3xl text-gray-800">Cover Generator</h1>
 
     <canvas
-      class="bg-white min-h-[340px] rounded-md"
+      class="bg-white rounded-md"
       ref="coverRef"
       height=""
       width=""
