@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export const useCanvasStore = defineStore("canva", () => {
   const height = ref(1080);
   const width = ref(1920);
-  const background = ref("");
+  const background = ref({ name: "reset", color: ["#ffffff", "#ffffff"] });
   const content = ref("");
 
   function setHeight(value: number) {
@@ -16,6 +16,9 @@ export const useCanvasStore = defineStore("canva", () => {
     setHeight(height);
     setWidth(width);
   }
+  function setBackground(bg: { name: string; color: string[] }) {
+    background.value = bg;
+  }
 
   return {
     height,
@@ -23,5 +26,6 @@ export const useCanvasStore = defineStore("canva", () => {
     background,
     content,
     setDimension,
+    setBackground,
   };
 });

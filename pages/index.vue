@@ -9,7 +9,7 @@ const parentRef = ref<HTMLDivElement | null>(null);
 const aspectRatio = computed(() => {
   return canvaStore.width / canvaStore.height;
 });
-const ctx = computed(() => coverRef.value?.getContext("2d"));
+
 watch(
   () => canvaStore.height,
   (val) => {
@@ -30,6 +30,8 @@ onMounted(() => {
   //setup canva
   coverRef.value!.width = width.value || 432;
   coverRef.value!.height = height.value || 768;
+
+  useCanvaEditor(coverRef, canvaStore.background.color);
 });
 </script>
 

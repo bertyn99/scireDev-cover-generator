@@ -1,7 +1,14 @@
 <script lang="ts" setup>
 import { colorChoice } from "~~/types/color";
+import { useCanvasStore } from "~~/store";
 
+const canvaStore = useCanvasStore();
+const background = computed(() => canvaStore.background);
 const colors: colorChoice[] = [
+  {
+    name: "reset",
+    color: ["#FFFFFF", "#FFFFFF"],
+  },
   {
     name: "fire",
     color: ["#F12711", "#F9BC2C"],
@@ -16,9 +23,11 @@ const colors: colorChoice[] = [
   },
 ];
 
-const bgSelected = ref<colorChoice>(colors[0]);
 const selectBgColor = (color: string) => {
-  return colors.find((c) => c.name === color);
+  const newColor = colors.find((c) => c.name === color);
+  if (newColor) {
+    canvaStore.setBackground(newColor);
+  }
 };
 </script>
 
@@ -35,7 +44,7 @@ const selectBgColor = (color: string) => {
         v-for="color in colors"
         :key="color.name"
         :color="color.color"
-        :selected="bgSelected.name === color.name"
+        :selected="background.name === color.name"
         :name="color.name"
         @clik="() => selectBgColor(color.name)"
       />
