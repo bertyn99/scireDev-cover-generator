@@ -22,6 +22,7 @@ const colors: colorChoice[] = [
     color: ["#FBD07C", "#FDFD57"],
   },
 ];
+const selectedColor = ref<any>(background);
 
 const selectBgColor = (color: string) => {
   const newColor = colors.find((c) => c.name === color);
@@ -46,7 +47,7 @@ const selectBgColor = (color: string) => {
         :color="color.color"
         :selected="background.name === color.name"
         :name="color.name"
-        @clik="() => selectBgColor(color.name)"
+        @click="() => selectBgColor(color.name)"
       />
     </div>
   </dl>

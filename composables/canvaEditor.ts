@@ -1,13 +1,11 @@
 export const useCanvaEditor = (
   canva: Ref<HTMLCanvasElement | null>,
-  bg: string[]
+  bg: Ref<string[]>
 ) => {
-  console.log("Using canvas");
-  console.log(canva);
   const ctx = computed(() => canva.value?.getContext("2d"));
   const drawBackground = (bg: string[]) => {
     if (ctx.value) {
-      console.log("drawBackground", bg);
+      console.log("drawBackground", bg[0], bg[1]);
       // add linear gradient
       let grd = ctx.value.createLinearGradient(
         0,
@@ -24,9 +22,13 @@ export const useCanvaEditor = (
     }
   };
 
+  watch(bg, (newBg) => {
+    console.log("watch bg", newBg);
+    drawBackground(newBg);
+  });
   const setup = () => {
     console.log("setup");
-    drawBackground(bg);
+    drawBackground(bg.value);
   };
 
   setup();

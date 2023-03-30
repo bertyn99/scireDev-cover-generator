@@ -4,6 +4,7 @@ import { useCanvasStore } from "~~/store";
 const canvaStore = useCanvasStore();
 const height = computed(() => canvaStore.height * 0.45);
 const width = computed(() => canvaStore.width * 0.45);
+const bgColor = computed(() => canvaStore.background.color);
 const coverRef = ref<HTMLCanvasElement | null>(null);
 const parentRef = ref<HTMLDivElement | null>(null);
 const aspectRatio = computed(() => {
@@ -31,7 +32,7 @@ onMounted(() => {
   coverRef.value!.width = width.value || 432;
   coverRef.value!.height = height.value || 768;
 
-  useCanvaEditor(coverRef, canvaStore.background.color);
+  useCanvaEditor(coverRef, bgColor);
 });
 </script>
 
